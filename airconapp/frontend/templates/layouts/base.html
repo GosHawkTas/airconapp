@@ -1,0 +1,42 @@
+<!doctype html>
+{% load airconapp_website_tags static %}
+<html lang="en_AU">
+<head>
+<meta charset="utf8">
+
+{% load static from staticfiles %}
+
+<title>
+{% block title %}{% endblock %}
+{% block title_postfix %}| | airconapp{% endblock %}
+</title>
+
+<link rel="stylesheet" href="{% static 'css/app.css' %}">
+{% block extra_head %} {% endblock %}
+
+</head>
+
+<body>
+
+{% block body_header %}{% endblock %}
+
+<header>
+    <h1>airconapp</h1>
+    {% block menu %}
+        {% get_site_root as site_root %}
+        {% top_menu calling_page=None %}
+    {% endblock %}
+    {% block breadcrumbs %}{% endblock %}
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+</footer>
+
+<script src="{% static 'js/app.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends "layouts/base.html" %}
+{% load airconapp_website_tags wagtailuserbar %}
+
+{% block title %}{{ self.seo_title|default:self.title }}{% endblock %}
+
+{% block extra_head %}
+{{ block.super }}
+    {% if self.search_description %}
+        <meta name="description" content="{{ self.search_description }}">
+    {% endif %}
+{% endblock %}
+
+{% block body_header %}
+{% wagtailuserbar %}
+{% endblock %}
+
+{% block menu %}
+    {% get_site_root as site_root %}
+    {% top_menu calling_page=self %}
+{% endblock %}
+
+{% block breadcrumbs %}
+    {% breadcrumbs self %}
+{% endblock %}

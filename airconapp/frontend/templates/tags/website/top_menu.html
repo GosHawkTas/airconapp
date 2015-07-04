@@ -1,0 +1,13 @@
+{% load airconapp_website_tags wagtailcore_tags %}
+{% get_site_root as site_root %}
+
+<nav classname="site-nav">
+<ul>
+    <li><a href="{% pageurl site_root %}">Home</a></li>
+    {% for menuitem in children %}
+    <li class="{% if calling_page.url == menuitem.url %}current{% endif %}">
+        <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+    </li>
+    {% endfor %}
+</ul>
+</nav>

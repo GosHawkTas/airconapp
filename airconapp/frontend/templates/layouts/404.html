@@ -1,0 +1,18 @@
+{% extends "layouts/base.html" %}
+{% load airconapp_website_tags wagtailuserbar %}
+
+{% block title %}404 Page not found{% endblock %}
+
+{% block menu %}
+    {% get_site_root as site_root %}
+    {% top_menu calling_page=self %}
+{% endblock %}
+
+{% block breadcrumbs %}
+    {% breadcrumbs self %}
+{% endblock %}
+
+{% block content %}
+<h1>Page not found</h1>
+<p>The page <strong>{{ request.build_absolute_uri }}</strong> could not be found</p>
+{% endblock %}
