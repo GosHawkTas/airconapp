@@ -25,7 +25,7 @@ def asset_redirect(src, dest):
 
 urlpatterns = patterns(
     '',
-    asset_redirect('favicon.ico', 'img/favicon.png'),
+    asset_redirect('favicon.ico', 'images/favicon.png'),
     asset_redirect('humans.txt', 'misc/humans.txt'),
     asset_redirect('robots.txt', 'misc/robots.txt'),
     url(r'^django-admin/', include(admin.site.urls)),

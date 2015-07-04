@@ -14,9 +14,11 @@
 <link rel="stylesheet" href="{% static 'css/app.css' %}">
 {% block extra_head %} {% endblock %}
 
+<link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}"/>
+
 </head>
 
-<body>
+<body class="{% block body_header %}{% endblock %}">
 
 {% block body_header %}{% endblock %}
 
