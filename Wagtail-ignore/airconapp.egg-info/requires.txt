@@ -1,6 +1,0 @@
-Django==1.7.6
-psycopg2==2.5.2
-wagtail==1.0b1
-pytz>=0
-elasticsearch==1.2.0
-elasticutils==0.8.2

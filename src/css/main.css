@@ -23,7 +23,6 @@ html {
  */
 
 ::selection {
-    background: #b3d4fc;
     text-shadow: none;
 }
 
@@ -87,11 +86,31 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+body {
+      background: url(../img/clouds-large.png);
+}
 
 
+p {
+  color: blue;
+}
 
 
+p.red {
+  color: red;
+}
 
+.whatever {
+  background-color: white;
+  width: 500px;
+  margin: auto;   /* this will centre the container horizontally on the page */
+  padding: 20px;   /* this will give it some room */
+
+}
+
+.whatever a {
+  
+}
 
 
 
