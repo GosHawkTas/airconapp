@@ -1,0 +1,166 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+          <title>Aircon.</title>
+        <meta name="description" content="">
+        <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="favicon" href="favicon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/practicemap.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+
+        <!--map stuff-->
+        <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+        <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
+        <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
+        <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
+        <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
+        <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+        <style>
+          body { margin:0 auto; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; height:100%; }
+        </style>
+
+
+
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+      <!-- Add your site or application content here -->
+      <header>
+        <h2>Aircon.</h2>
+      </header>
+
+      <div class="instructions">
+        <p>Enter your postcode in the search box, or navigate through the map using the markers.</br>
+Select a final postcode marker to examine the top rated airconditioners for your area.</br></p>
+      </div>
+
+      <div class="mapbox">
+      <style>
+      .menu-ui {
+        background:#fff;
+        position:absolute;
+        top:10px;right:10px;
+        z-index:1;
+        border-radius:3px;
+        width:120px;
+        border:1px solid rgba(0,0,0,0.4);
+        }
+        .menu-ui a {
+          font-size:13px;
+          color:#404040;
+          display:block;
+          margin:0;padding:0;
+          padding:10px;
+          text-decoration:none;
+          border-bottom:1px solid rgba(0,0,0,0.25);
+          text-align:center;
+          }
+          .menu-ui a:first-child {
+            border-radius:3px 3px 0 0;
+            }
+          .menu-ui a:last-child {
+            border:none;
+            border-radius:0 0 3px 3px;
+            }
+          .menu-ui a:hover {
+            background:#f8f8f8;
+            color:#404040;
+            }
+          .menu-ui a.active {
+            background:#3887BE;
+            color:#FFF;
+            }
+            .menu-ui a.active:hover {
+              background:#3074a4;
+              }
+              .search-ui {
+            position:absolute;
+            top:10px;
+           right:10px;
+            z-index:1000;
+        }
+        .popup {
+        text-align:center;
+        }
+      .popup .slideshow .image        { display:none; }
+      .popup .slideshow .image.active { display:block; }
+      .popup .slideshow img {
+        width:100%;
+        }
+      .popup .slideshow .caption {
+        background:#eee;
+        padding:10px;
+        }
+      .popup .cycle {
+        padding:10px 0 20px;
+        }
+        .popup .cycle a.prev { float:left; }
+        .popup .cycle a.next { float:right; }
+
+      </style>
+      <div id='map'>
+      	<nav id='map-ui' class='menu-ui'>
+        </nav>
+      </div>
+
+      <script>
+
+
+      L.mapbox.accessToken = 'pk.eyJ1IjoiamVzc2NsYXJrZSIsImEiOiI1NjBjMmI1YjZhYzhjNDBmNWI0NjMwZDI3YTBiNDMzNCJ9.maxV35PVVN-oIOSKrgnk8A';
+      var map = L.mapbox.map('map', 'jessclarke.mkf7e0n9').setView([-28, 138], 4).addControl(L.mapbox.geocoderControl('mapbox.places'));
+
+      var imageContent = '<div class="image active">' +
+                                    '<img src="img/acimage.png"/>' +
+                                  '</div>';
+      var popupContent =  '<div id="id" class="popup">' +
+                            '<h2>Top 5 Airconditioners</h2>' +
+                            '<div class="slideshow">' +
+                                      imageContent +
+                                  '</div>' +
+                        '</div>';
+
+      L.mapbox.featureLayer('jessclarke.mki5j8l1').on('ready', function(e) {
+
+          var clusterGroup = new L.MarkerClusterGroup();
+          e.target.eachLayer(function(layer) {
+              clusterGroup.addLayer(layer);
+          });
+          map.addLayer(clusterGroup);
+      }).bindPopup(popupContent, {minWidth: 600}).openPopup();
+
+      </script>
+      </div>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/{{JQUERY_VERSION}}/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="js/vendor/jquery-{{JQUERY_VERSION}}.min.js"><\/script>')</script>
+      <script src="js/plugins.js"></script>
+      <script src="js/main.js"></script>
+
+      <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+      <script>
+          (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+          function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+          e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+          e.src='https://www.google-analytics.com/analytics.js';
+          r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+          ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+      </script>
+
+      <footer>
+        <a href="practicemap.html">Home</a>
+        <a href="about.html">About us</a>
+        <a href="https://github.com/GosHawkTas/airconapp.git">Github</a>
+      </footer>
+    </body>
+</html>

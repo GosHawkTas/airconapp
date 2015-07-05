@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Displaying WMS layers</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
+<link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+<style>
+.menu-ui {
+  background:#fff;
+  position:absolute;
+  top:10px;right:10px;
+  z-index:1;
+  border-radius:3px;
+  width:120px;
+  border:1px solid rgba(0,0,0,0.4);
+  }
+  .menu-ui a {
+    font-size:13px;
+    color:#404040;
+    display:block;
+    margin:0;padding:0;
+    padding:10px;
+    text-decoration:none;
+    border-bottom:1px solid rgba(0,0,0,0.25);
+    text-align:center;
+    }
+    .menu-ui a:first-child {
+      border-radius:3px 3px 0 0;
+      }
+    .menu-ui a:last-child {
+      border:none;
+      border-radius:0 0 3px 3px;
+      }
+    .menu-ui a:hover {
+      background:#f8f8f8;
+      color:#404040;
+      }
+    .menu-ui a.active {
+      background:#3887BE;
+      color:#FFF;
+      }
+      .menu-ui a.active:hover {
+        background:#3074a4;
+        }
+        .search-ui {
+      position:absolute;
+      top:10px;
+     right:10px;
+      z-index:1000;
+  }
+  .popup {
+  text-align:center;
+  }
+.popup .slideshow .image        { display:none; }
+.popup .slideshow .image.active { display:block; }
+.popup .slideshow img {
+  width:100%;
+  }
+.popup .slideshow .caption {
+  background:#eee;
+  padding:10px;
+  }
+.popup .cycle {
+  padding:10px 0 20px;
+  }
+  .popup .cycle a.prev { float:left; }
+  .popup .cycle a.next { float:right; }
+
+</style>
+<div id='map'>
+	<nav id='map-ui' class='menu-ui'> 
+  </nav>
+</div>
+
+<script>
+
+
+L.mapbox.accessToken = 'pk.eyJ1IjoiamVzc2NsYXJrZSIsImEiOiI1NjBjMmI1YjZhYzhjNDBmNWI0NjMwZDI3YTBiNDMzNCJ9.maxV35PVVN-oIOSKrgnk8A';
+var map = L.mapbox.map('map', 'jessclarke.mkf7e0n9').setView([-35, 140], 4).addControl(L.mapbox.geocoderControl('mapbox.places'));
+
+var imageContent = '<div class="image active">' +
+                              '<img src="acimage.png"/>' +
+                            '</div>';
+var popupContent =  '<div id="id" class="popup">' +
+                      '<h2>Top 5 Airconditioners</h2>' +
+                      '<div class="slideshow">' +
+                                imageContent +
+                            '</div>' +
+                  '</div>';
+
+L.mapbox.featureLayer('jessclarke.mki5j8l1').on('ready', function(e) {
+
+    var clusterGroup = new L.MarkerClusterGroup();
+    e.target.eachLayer(function(layer) {
+        clusterGroup.addLayer(layer);
+    });
+    map.addLayer(clusterGroup);
+}).bindPopup(popupContent, {minWidth: 600}).openPopup();
+
+</script>
+</body>
+</html>
