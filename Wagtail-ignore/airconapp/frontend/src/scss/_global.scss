@@ -1,6 +1,9 @@
 *, ::before, ::after {
 	box-sizing: border-box;
-  background: url(../images/back-clouds.png);
+}
+
+body {
+background:red url(../images/back-clouds.png);
 }
 
 /*:root {
