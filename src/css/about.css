@@ -112,7 +112,13 @@ textarea {
      padding-left: 50px;
    }
 
+   .about {
+     font-family: helvetica;
+     padding-left: 50px;
+   }
+
    .project {
+     margin-top: -50px;
      width:100%;
      font-family: helvetica;
      padding-left: 50px;
@@ -128,13 +134,28 @@ textarea {
       vertical-align: middle;
     }
 
-   .project .aircondor {
-   }
-
-   .project .condorblue {
+   .projtext {
+     font-family: helvetica;
+     padding-left: 50px;
    }
 
    .team {
+     width:100%;
+     font-family: helvetica;
+     padding-left: 50px;
+     right: 0;
+     text-align: center;
+   }
+
+  .project .goshawkweb .goshawk {
+     display: inline-block;
+     vertical-align: middle;
+   }
+   .team td {
+      vertical-align: middle;
+    }
+
+   .teamtext {
      font-family: helvetica;
      padding-left: 50px;
    }
