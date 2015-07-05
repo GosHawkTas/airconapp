@@ -436,7 +436,7 @@ Select a final postcode marker to examine the top rated airconditioners for your
       </script>
 
       <footer>
-        <a href="practicemap.html">Home </a>
+        <a href="index.php">Home </a>
         <a href="about.html">About </a>
         <a href="https://github.com/GosHawkTas/airconapp.git">Github </a>
       </footer>
